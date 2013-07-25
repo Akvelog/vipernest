@@ -44,12 +44,19 @@ function CFParseCtags()
             let l:ret_excmd = substitute(l:ret_excmd, '\^', '', 'g')
             let l:arr_excmd = split(l:ret_excmd, ' ')
             let l:ret_protostr = ''
+            let l:stars = ''
             for l:elt_excmd in l:arr_excmd
-                if match(l:elt_excmd, '^'.l:parseInput[0]) == 0
+                if match(l:elt_excmd, '^\**'.l:parseInput[0].'\s*(') == 0
+                    let l:staridx = 0
+                    while (l:elt_excmd[l:staridx] == '*')
+                        let l:stars .= '*'
+                        let l:staridx = l:staridx + 1
+                    endwhile
                     break
                 endif
                 let l:ret_protostr .= l:elt_excmd.' '
             endfor
+            let l:ret_protostr .= l:stars
             let l:ret_protostr .= substitute(l:parseInput[3], 'signature:', l:parseInput[0], '')
             return l:ret_filename.': '.l:ret_protostr
         endif

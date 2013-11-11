@@ -19,8 +19,16 @@ endif
 
 let g:cfproto_searchPath = g:cfproto_alternateSearchPath.' *.h *.c'
 
+if g:cfproto_use_std_inc == 1
+    if (exists('g:cfproto_std_inc_path'))
+        let g:cfproto_searchPath = g:cfproto_searchPath.g:cfproto_std_inc_path.'*.h '
+    else
+        let g:cfproto_searchPath = g:cfproto_searchPath.'/usr/include/*.h /usr/local/include/*.h '
+    endif
+endif
+
 if (!exists('g:cfproto_options'))
-    let g:cfproto_options = '--c-kinds=fp --fields=+S-kfs -f- '
+    let g:cfproto_options = '--c-kinds=fp --fields=+S-kfs -f- --recurse=yes '
 endif
 
 command! -nargs=0 CFuncParseCtags call EchoPrototype()

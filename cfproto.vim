@@ -17,7 +17,7 @@ if (!exists('g:cfproto_alternateSearchPath'))
     endif
 endif
 
-let g:cfproto_searchPath = g:cfproto_alternateSearchPath.' *.h'
+let g:cfproto_searchPath = g:cfproto_alternateSearchPath.' *.h *.c'
 
 if (!exists('g:cfproto_options'))
     let g:cfproto_options = '--c-kinds=fp --fields=+S-kfs -f- '

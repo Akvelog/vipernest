@@ -1,7 +1,4 @@
-"if exists("loaded_cFuncProto")
-    "finish
-"endif
-"let loaded_cFuncProto = 1
+" cfproto - a simple function prototype searching tool
 
 if (!exists('g:cfproto_alternateSearchPath'))
     let b:alternateFile = findfile('.clang_complete', '.;')

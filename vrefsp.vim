@@ -42,4 +42,4 @@ function Vrefsp_wincount()
 endfunction
 
 com! -nargs=* -complete=file Vrefedit call Vrefsp_New("<args>")
-com Vre Vrefedit
+com -complete=file Vre Vrefedit

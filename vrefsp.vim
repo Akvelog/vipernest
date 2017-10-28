@@ -41,5 +41,5 @@ function Vrefsp_wincount()
     return tabpagewinnr(tabpagenr(), '$')
 endfunction
 
-com! -nargs=* -complete=file Vrefedit call Vrefsp_New("<args>")
-com -complete=file Vre Vrefedit
+com! -nargs=? -complete=file Vrefedit call Vrefsp_New("<args>")
+com! -nargs=? -complete=file Vre Vrefedit <args>
